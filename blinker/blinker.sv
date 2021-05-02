@@ -1,19 +1,20 @@
 // LED blinker
 
 module blinker(
-    input clk,
-    input rst_n,
-    output led);
+    input CLK,
+    output LED,
+    output USBPU);
 
-logic [3:0] counter;
+    assign USBPU = 0;
 
-always@(posedge clk or negedge rst_n)
-begin
-  if(!rst_n) counter <= 0;
-  if(clk) counter <= counter + 1;
-end
+    reg [25:0] counter;
+    wire [31:0] pattern = 32'b101010001110111011100010101;
 
-assign led = counter[3];
+    always@(posedge CLK) begin
+        if(CLK) counter <= counter + 1;
+    end
+
+    assign LED = pattern[counter[25:21]];
 
 endmodule
 
