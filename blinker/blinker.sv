@@ -5,7 +5,7 @@ module blinker(
     input rst_n,
     output led);
 
-logic [15:0] counter;
+logic [3:0] counter;
 
 always@(posedge clk or negedge rst_n)
 begin
@@ -13,7 +13,7 @@ begin
   if(clk) counter <= counter + 1;
 end
 
-assign led = counter[15];
+assign led = counter[3];
 
 endmodule
 

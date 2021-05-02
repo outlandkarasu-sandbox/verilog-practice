@@ -31,6 +31,13 @@ initial
     $finish;
   end
 
+initial
+  begin
+    test_rst_n = 1'b1;
+    #(STEP / 2) test_rst_n = 1'b0;
+    #(STEP / 2) test_rst_n = 1'b1;
+  end
+
 blinker blinker_1(
   .clk(test_clk),
   .rst_n(test_rst_n),
