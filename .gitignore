@@ -1,0 +1,7 @@
+*.vcd
+*.exe
+.DS_Store
+*.dblite
+*.bin
+*.asc
+*.blif
